@@ -22,9 +22,9 @@ admin.initializeApp({
 
 app.use(cors(
   {
-    origin:["https://blogify-server-mu.vercel.app"],
+    origin:["http://localhost:3000"],
     methods:["POST", "GET","PATCH","DELETE"],
-    credential: true
+    credential: true,
   }
 ));
 app.use(express.json());
