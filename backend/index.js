@@ -6,7 +6,7 @@ const cors = require("cors");
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const admin = require('firebase-admin');
-const port = process.env.PORT || 6173;
+const port = process.env.PORT;
 
 const uri = process.env.MONGO_URI;
 const secret = process.env.JWT_SECRET;
@@ -234,7 +234,7 @@ async function run() {
 run().catch(console.log);
 
 app.get('/', (req, res) => {
-  res.send('Route is working');
+  res.json('Route is working');
 });
 
 app.listen(port, (req, res) => {
