@@ -31,7 +31,7 @@ const Signup = () => {
 
       const userData = { name, email, password };
 
-      const response = await fetch('http://localhost:6173/users', {
+      const response = await fetch('https://blogify-server-keb1.onrender.com/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

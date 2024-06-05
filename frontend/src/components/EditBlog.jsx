@@ -16,7 +16,7 @@ const EditBlog = ({ _id }) => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        await fetch(`http://localhost:6173/blogs/${_id}`)
+        await fetch(`https://blogify-server-keb1.onrender.com/blogs/${_id}`)
           .then(res => res.json())
           .then(data => {
             setBlog(data);
@@ -35,14 +35,17 @@ const EditBlog = ({ _id }) => {
   }, [_id]);
 
   const handleSubmit = async data => {
-    const response = await fetch(`http://localhost:6173/blogs/${blog._id}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-type': 'application/json',
-        authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(data),
-    });
+    const response = await fetch(
+      `https://blogify-server-keb1.onrender.com/blogs/${blog._id}`,
+      {
+        method: 'PATCH',
+        headers: {
+          'Content-type': 'application/json',
+          authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(data),
+      }
+    );
     if (!response.ok) {
       throw new Error('Failed to update blog');
     }
@@ -72,7 +75,7 @@ const EditBlog = ({ _id }) => {
   };
 
   const handleDelete = async () => {
-    await fetch(`http://localhost:6173/blogs/${blog._id}`, {
+    await fetch(`https://blogify-server-keb1.onrender.com/blogs/${blog._id}`, {
       method: 'DELETE',
       headers: {
         'Content-type': 'application/json',

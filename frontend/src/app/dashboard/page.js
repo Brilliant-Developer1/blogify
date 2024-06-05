@@ -22,7 +22,7 @@ const Dashboard = () => {
 
     const fetchUserCount = async () => {
       try {
-        const response = await fetch('http://localhost:6173/users');
+        const response = await fetch('https://blogify-server-keb1.onrender.com/users');
         if (response.ok) {
           const data = await response.json();
           setUserCount(data.length);

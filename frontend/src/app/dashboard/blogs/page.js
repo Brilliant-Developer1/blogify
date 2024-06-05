@@ -1,6 +1,5 @@
 "use client"
 import SortFilterBlogs from '@/components/SortFilterBlogs';
-import getAllBlogs from '@/lib/getAllBlogs';
 import { Pencil } from 'lucide-react';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
@@ -17,7 +16,7 @@ const Blogs = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await fetch('https://blogify-server-mu.vercel.app/blogs', {
+        const response = await fetch('https://blogify-server-keb1.onrender.com/blogs', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

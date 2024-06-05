@@ -23,13 +23,16 @@ const AuthProvider = ({ children }) => {
   const fetchJWT = async firebaseUser => {
     try {
       const token = await firebaseUser.getIdToken();
-      const response = await fetch('http://localhost:6173/auth', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ token }),
-      });
+      const response = await fetch(
+        'https://blogify-server-keb1.onrender.com/auth',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ token }),
+        }
+      );
 
       const data = await response.json();
       if (response.ok) {

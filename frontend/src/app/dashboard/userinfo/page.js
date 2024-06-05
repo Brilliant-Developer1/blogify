@@ -19,7 +19,7 @@ const UserInfo = () => {
    
     const fetchUserData = async () => {
       try {
-        const response = await fetch('http://localhost:6173/users', {
+        const response = await fetch('https://blogify-server-keb1.onrender.com/users', {
           headers: {
             'Content-type': 'application/json',
             authorization: `Bearer ${token}`,
@@ -59,7 +59,7 @@ const UserInfo = () => {
       delete updatedUserData._id;
       delete updatedUserData.email;
   
-      const response = await fetch(`http://localhost:6173/users/${userData._id}`, {
+      const response = await fetch(`https://blogify-server-keb1.onrender.com/users/${userData._id}`, {
         method: 'PATCH',
         headers: {
           'Content-type': 'application/json',

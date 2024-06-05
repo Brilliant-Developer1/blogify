@@ -14,7 +14,7 @@ const AddBlog = () => {
     const blog = { blogName, imageUrl, details };
 
     try {
-      const response = await fetch('http://localhost:6173/blogs', {
+      const response = await fetch('https://blogify-server-keb1.onrender.com/blogs', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
