@@ -20,7 +20,13 @@ admin.initializeApp({
   }),
 });
 
-app.use(cors());
+app.use(cors(
+  {
+    origin:["https://blogify-server-mu.vercel.app"],
+    methods:["POST", "GET","PATCH","DELETE"],
+    credential: true
+  }
+));
 app.use(express.json());
 
 function verifyToken(req, res, next) {
