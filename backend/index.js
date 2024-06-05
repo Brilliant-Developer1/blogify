@@ -27,6 +27,11 @@ app.use(cors(
     credentials: true,
   }
 ));
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
+});
 app.use(express.json());
 
 function verifyToken(req, res, next) {
