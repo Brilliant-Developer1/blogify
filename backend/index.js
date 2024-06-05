@@ -24,7 +24,7 @@ app.use(cors(
   {
     origin:["http://localhost:3000", "https://blogify-server-mu.vercel.app"],
     methods:["POST", "GET","PATCH","DELETE"],
-    credential: true,
+    credentials: true,
   }
 ));
 app.use(express.json());

@@ -6,6 +6,7 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 const Blogs = () => {
+  const token = localStorage.getItem('token');
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -16,7 +17,20 @@ const Blogs = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const blogsData = await getAllBlogs();
+        const response = await fetch('https://blogify-server-mu.vercel.app/blogs', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+          credentials: 'include', // Include credentials if needed
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        const blogsData = await response.json();
         setBlogs(blogsData);
       } catch (err) {
         setError('Failed to fetch blogs');
@@ -26,7 +40,7 @@ const Blogs = () => {
     };
 
     fetchBlogs();
-  }, []);
+  }, [token]);
 
   if (loading) {
     return <div>Loading...</div>;
